@@ -5,3 +5,4 @@ crash.log
 .terraform
 terraform-provider-*
 terraform.tfstate.backup
+main.tf

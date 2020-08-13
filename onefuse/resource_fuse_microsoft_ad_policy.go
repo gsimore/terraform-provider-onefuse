@@ -74,8 +74,12 @@ func bindMicrosoftADPolicyResource(d *schema.ResourceData, policy *MicrosoftADPo
 	if err := d.Set("microsoft_endpoint_id", microsoftEndpointID); err != nil {
 		return errors.WithMessage(err, "cannot set microsoft_endpoint")
 	}
-
-	// TODO: set OU and letter_case, too.
+	if err := d.Set("computer_name_letter_case", policy.ComputerNameLetterCase); err != nil {
+		return errors.WithMessage(err, "cannot set computer_name_letter_case")
+	}
+	if err := d.Set("ou", policy.OU); err != nil {
+		return errors.WithMessage(err, "cannot set ou")
+	}
 
 	return nil
 }
@@ -96,6 +100,7 @@ func resourceMicrosoftADPolicyCreate(d *schema.ResourceData, m interface{}) erro
 	if err != nil {
 		return err
 	}
+
 	err = bindMicrosoftADPolicyResource(d, &policy)
 	return err
 }

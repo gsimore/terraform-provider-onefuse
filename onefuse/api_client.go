@@ -73,7 +73,7 @@ type MicrosoftEndpoint struct {
 
 type MicrosoftADPolicy struct {
 	Links *struct {
-		Self              LinkRef `json:self,omitempty"`
+		Self              LinkRef `json:"self,omitempty"`
 		Workspace         LinkRef `json:"workspace,omitempty"`
 		MicrosoftEndpoint LinkRef `json:"microsoftEndpoint,omitempty"`
 	} `json:"_links,omitempty"`
